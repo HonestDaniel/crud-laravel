@@ -15,6 +15,9 @@ class AuthorController extends Controller
     public function index()
     {
         $authors = Author::paginate(20);
+        foreach($authors as $author) {
+            $author['count'] = count($author->books);
+        }
         return view('authorsindex', compact('authors'));
     }
 
@@ -23,7 +26,7 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('authorsform');
     }

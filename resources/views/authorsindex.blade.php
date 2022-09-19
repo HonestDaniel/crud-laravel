@@ -19,9 +19,9 @@
             <td>
                 <a style='text-decoration: none;' href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>
             </td>
-            <!-- <td>
-                <a style='text-decoration: none;' href="{{ route('authors.show', $author) }}">{{ $author->name }}</a>
-            </td> -->
+            <td>
+                <a style='text-decoration: none;' href="{{ route('authors.show', $author) }}">{{ $author->count }}</a>
+            </td>
             <td>
                 <form method="POST" action="{{ route('authors.destroy', $author) }}">
                     <a class="btn btn-outline-primary" role="button" href='{{ route("authors.edit", $author) }}'>Edit</a>

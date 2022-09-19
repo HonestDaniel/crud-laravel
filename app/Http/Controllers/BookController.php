@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB; 
 
 class BookController extends Controller
 {
@@ -35,8 +37,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create($request->only(['title', 'name']));
+        $data = $request->only(['title']);
+        $name = $request->only(['name']);
+        $author = DB::table('authors')->select('*')->where('name', $name)->get()->first();
+        if ($author) {
+            $data['author_id'] = $author->id;
+        } else {
+            $data['author_id'] = DB::table('authors')->insertGetId([
+                'name' => $name['name']
+            ]);
+        }
+        // print_r($data);
+        $result = Book::create($data);
         return redirect()->route('books.index');
+        // Book::create($request->only(['title']));
+        // return redirect()->route('books.index');
     }
 
     /**

@@ -20,7 +20,7 @@
                 <a style='text-decoration: none;' href="{{ route('books.show', $book) }}">{{ $book->title }}</a>
             </td>
             <td>
-                <a style='text-decoration: none;' href="{{ route('books.show', $book) }}">{{ $book->name }}</a>
+                <a style='text-decoration: none;' href="{{ route('books.show', $book) }}">{{ $book->author ? $book->author->name : '' }}</a>
             </td>
             <td>
                 <form method="POST" action="{{ route('books.destroy', $book) }}">

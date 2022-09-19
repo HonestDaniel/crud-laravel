@@ -9,6 +9,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Id: {{$author->id}}</li>
     <li class="list-group-item">Author: {{ $author->name }}</li>
+    <li class="list-group-item"># of books: {{ $author->count }}</li>
   </ul>
 </div>
 <form class='mt-2' method="POST" action="{{ route('authors.destroy', $author) }}">

@@ -24,7 +24,7 @@
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Author name</label>
             <input name = 'name'
-            value='{{ isset($book) ? $book->name : null}}' 
+            value='{{ isset($book) ? $book->author->name : null}}'
             type="text" class="form-control" id="formGroupExampleInput2" placeholder="Type author name here">
         </div>
         <button type="submit" class="btn btn-primary">{{isset($book) ? "Edit!" : "Add a book!"}}</button>
